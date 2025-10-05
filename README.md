@@ -9,3 +9,5 @@ to setup >>_npm install vue@next_
 to use in a html code >> _<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>_
 
 for now we'll be learning it through html
+
+DAY 1 (5/10/2025) - finished until the vuejs directives....
