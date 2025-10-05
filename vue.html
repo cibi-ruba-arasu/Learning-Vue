@@ -3,9 +3,20 @@
         <title>Learning Vue</title>
     </head>
     <body>
-        <p>
-            Hello Vue!
+        <p id="greeting">
+            {{greeting}}
         </p>
     </body>
 </html>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        // why cant i name a function 'greet'???
+        data : function() {
+            return { 
+                greeting: "Hello Cibi from Vue!"
+            }
+        }
+    })
+    app.mount('#greeting')
+</script>
