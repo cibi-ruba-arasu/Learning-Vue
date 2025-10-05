@@ -1,13 +1,30 @@
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+</style>
+
 <html>
     <!--vuejs directives are a way to extend html to the javascript in vue-->
+    <!--here, the vue keywords we use are
+    v-model
+    v-if
+    v-show
+    -->
     <head>
         <title>Learning Vue</title>
     </head>
     <body>
-        <p id="greeting">
-            {{greeting}}
-            <input v-model="greeting" />
-        </p>
+        <div id="app">
+            <p id="greeting">
+                {{greeting}}
+                <input v-model="greeting" />
+            </p>
+            <div v-if="isVisible" class="box"></div>
+            <div v-show="can_u_see" class="box" style="background-color: blue;"></div>
+        </div>
     </body>
 </html>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -15,9 +32,11 @@
     const app = Vue.createApp({
         data : function() {
             return { 
-                greeting: "Hello Cibi from Vue!"
+                greeting: "Hello Cibi from Vue!",
+                isVisible: true,
+                can_u_see:true
             }
         }
     })
-    app.mount('#greeting')
+    app.mount('#app') 
 </script>
