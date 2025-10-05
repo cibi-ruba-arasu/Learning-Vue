@@ -1,0 +1,23 @@
+<html>
+    <!--vuejs directives are a way to extend html to the javascript in vue-->
+    <head>
+        <title>Learning Vue</title>
+    </head>
+    <body>
+        <p id="greeting">
+            {{greeting}}
+            <input v-model="greeting" />
+        </p>
+    </body>
+</html>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data : function() {
+            return { 
+                greeting: "Hello Cibi from Vue!"
+            }
+        }
+    })
+    app.mount('#greeting')
+</script>
