@@ -1,0 +1,65 @@
+<style>
+    [v-cloak] { display: none; }
+</style>
+
+<html>
+    <head>
+        <title>Vue Custom Component</title>
+    </head>
+    <body >
+        <div id="app" v-cloak>
+            <p style="font-weight: bolder;">Vue Custom Component</p>
+            <custom-form/>
+        </div>        
+    </body>
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+            data(){
+                return{
+
+                }
+
+            },
+            methods:{
+
+            }
+        
+    })
+
+    app.component('custom-form',{
+        template : `
+            <div>
+                <h2>{{title}}</h2>
+                <form v-on:submit.prevent="submission" >
+                
+                    <label for="email">Email:</label>
+                    <input type="email" style="display:block;margin-bottom:10px" id="email" placeholder="Enter your email" v-model="email"/>
+                    <label for="password">Password:</label>
+                    <input type="password" style="display:block;margin-bottom:10px" id="password" placeholder="Enter your password" v-model="password"/>
+                    <button>Submit</button>
+                </form>
+            </div>
+        `,
+        data(){
+            return{
+                title:"Login Form",
+                email:"",
+                password:""
+            }
+        },
+        methods:{
+            submission(){
+                console.log("Form Submitted");
+            }
+        }
+    })
+
+    app.mount('#app')
+
+    export default {
+        email,password
+    }
+</script>
