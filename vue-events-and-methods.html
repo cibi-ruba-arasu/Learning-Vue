@@ -43,7 +43,18 @@
                 <div class="box" style="background-color: yellow;" v-else-if="else_if_visibility"></div>
                 <div class="box" style="background-color: purple;" v-else></div>
             </div>
-            <p>Vue Events and Methods</p>
+            <p style="font-weight: bolder;">Vue Events and Methods</p>
+            <div class="maindiv">
+                <div class="box" style="background-color: orange;" v-if="button_visible"></div>
+            </div>
+            <button v-on:click="togglebox">Press to toggle box</button>
+            <button v-on:click.right="togglebox">Right Click to toggle box</button>
+            <div style="display:block">
+
+                <label for="name-input">Enter you name here(press Enter to display):</label>
+                <input type="text" id="name-input" v-on:keyup.enter="display_name"/>
+                <p>Your name is: {{name}}</p>
+            </div>
         </div>
     </body>
 </html>
@@ -56,7 +67,18 @@
                 isVisible: true,
                 can_u_see:true,
                 if_visibility: true,
-                else_if_visibility: false
+                else_if_visibility: false,
+                button_visible: false,
+                name:"User Undefined"
+            }
+        },
+        methods:{
+            togglebox() {
+                this.button_visible = !this.button_visible;
+            },
+            display_name() {
+                let x = document.getElementById("name-input").value;
+                this.name = x;
             }
         }
     })
