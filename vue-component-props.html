@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Vue Component Props</title>
+    </head>
+    <body>
+        <div class="maindiv" id="app">
+            <p style="font-weight: bolder;">Vue Component props</p>
+            <p>Learn to Pass the given input between components</p>
+            <custom-input/>
+        </div>
+        
+    </body>
+</html>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+            data(){
+                return{
+
+                }
+
+            },
+            methods:{
+
+            }
+        
+    })
+
+    app.component('custom-component2',{
+        template:
+        `   <div style="border-style:solid;border-color:black">
+                <p>COMPONENT 2</p>
+                <label style="font-weight:bolder; color:red">
+                    {{inputDatum}}
+                </label>
+            </div>
+        `,
+        props:['inputDatum'],
+        data(){
+            return{
+                VALUE:""
+            }
+        }
+    })
+
+    app.component('custom-input',{
+        template:
+            `
+            <div style="border:1px solid black; padding:10px; margin:10px;">
+                <p>Component 1</p>
+                <input v-model="inputdataforcomponent" />
+                <custom-component2 v-bind:inputDatum="inputdataforcomponent"/>
+            </div>
+            `
+            //simply ":inputDatum=inputdataforcomponent" also works
+        ,
+        
+        components:['custom-component2'],
+        data(){
+            return{
+                inputdata:"",
+                inputdataforcomponent:"Let it bun"
+            }
+        },
+    })
+
+    
+//DO NOT USE '-' IN COMPONENT NAME, USE CAMEL CASE OR UNDERSCORE
+    
+    app.mount('#app')
+</script>
+
