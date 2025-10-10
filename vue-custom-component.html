@@ -1,5 +1,24 @@
 <style>
     [v-cloak] { display: none; }
+    .form-label-input{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        border-style:solid;
+        border-color:"black";
+        width: min-content;
+        padding: 30px;
+        
+    }
+    .custom-form-style{
+        border-style:solid;
+        border-color:black;
+        background-color: lightgrey;
+        border-width: 2px;
+        padding: 10px;
+    }
 </style>
 
 <html>
@@ -31,16 +50,19 @@
 
     app.component('custom-form',{
         template : `
-            <div>
-                <h2>{{title}}</h2>
-                <form v-on:submit.prevent="submission" >
-                
-                    <label for="email">Email:</label>
-                    <input type="email" style="display:block;margin-bottom:10px" id="email" placeholder="Enter your email" v-model="email"/>
-                    <label for="password">Password:</label>
-                    <input type="password" style="display:block;margin-bottom:10px" id="password" placeholder="Enter your password" v-model="password"/>
-                    <button>Submit</button>
-                </form>
+            <div class="form-label-input">
+                <input type="text" class="custom-label-input" v-model="title"/>
+                <div class="custom-form-style">
+                    <h2>{{title}}</h2>
+                    <form v-on:submit.prevent="submission" >
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" style="display:block;margin-bottom:10px" id="email" placeholder="Enter your email" v-model="email"/>
+                        <label for="password">Password:</label>
+                        <input type="password" style="display:block;margin-bottom:10px" id="password" placeholder="Enter your password" v-model="password"/>
+                        <button>Submit</button>
+                    </form>
+                </div>
             </div>
         `,
         data(){
