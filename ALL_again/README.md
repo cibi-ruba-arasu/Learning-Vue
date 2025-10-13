@@ -4,4 +4,6 @@
 
 <p>https://youtu.be/FXpIoQ_rT_c?si=Cr6EKFONcbVcnle7</p>
 
-<p>Goal today: 0:00 to 1:30 mins</p>
+<p>Goal today: 0:00 to 1:30 hrs</p>
+
+<p>finished til 1:05 hrs of course (14/10/2025 - Tuesday - 1:05 hrs)</p>
