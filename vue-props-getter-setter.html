@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Vue Getter Setter</title>
+    </head>
+    <body>
+        <div id="app" class="maindiv">
+            <p style="font-weight: bolder;">Vue Getter Setter</p>
+            <p>
+                whenever the value of a variable changes, you will use a getter and setter function
+                which would be executed when the variable is either set or get
+            </p>
+            <custom-input/>
+        </div>
+        
+    </body>
+</html>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+            data(){
+                return{
+
+                }
+
+            },
+            methods:{
+
+            }
+    })
+
+    app.component('custom-input',{
+        template:
+            `
+            <div style="border:1px solid black; padding:10px; margin:10px;">
+                <p>Component 1</p>
+                <input v-model="inputdataforcomponent" />
+                <custom-component2 v-bind:inputDatum="inputdataforcomponent"/>
+            </div>
+            `
+            //simply ":inputDatum=inputdataforcomponent" also works
+        ,
+        
+        components:['custom-component2'],
+        data(){
+            return{
+                inputdata:"",
+                inputdataforcomponent:"Let it bun"
+            }
+        },
+    })
+
+    app.component('custom-component2',{
+        template:
+            `   
+            <div style="border-style:solid;border-color:black">
+                <p>COMPONENT 2</p>
+                <label style="font-weight:bolder; color:red">
+                    {{inputDatum}}
+                </label>
+            </div>
+        `,
+        props:['inputDatum',""],
+
+        //data(){
+        //    return{
+        //        VALUE:""
+        //    }
+        //}
+
+        computed:{
+            inputDatum:{
+                get(){
+
+                },
+                set(){
+
+                }
+            }
+        }
+    })
+
+    app.mount('#app')
+</script>

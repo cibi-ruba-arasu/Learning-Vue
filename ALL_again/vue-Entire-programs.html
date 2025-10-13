@@ -1,0 +1,326 @@
+<style>
+    [v-cloak] { display: none; }
+    .maindiv{
+        margin: 20px;
+        padding: 20px;
+        border: 2px solid black;
+    }
+    .box-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 400px;
+        width: 400px;
+        border: 2px solid black;
+        justify-content: space-between;
+        padding: 20px;
+    }
+    .box{
+        height:200px;
+        width:200px;
+        background-color: coral;
+
+    }
+    #app{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: lightblue;
+    }
+    .formdiv{
+        height: 500px;
+        width: 400px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .input-template{
+        display: flex;
+        flex-direction: column;
+        margin:20px;
+        border: 1px solid black;
+        padding:20px;
+        border-radius: 10px;
+    }
+    .commentdiv{
+        height: auto;
+        width: auto;
+        padding: 20px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: lightskyblue;
+    }
+    .tit{
+        font-weight: bolder;
+        font-size: 40px;
+        text-decoration: underline;
+    }
+    .code-display{
+        background-color: lightgreen;
+        margin: 20px;
+    }
+    .maintit{
+        background-color: black;
+        color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 70px;
+        text-align: center;
+        padding: 30px;
+    }
+    .loop{
+        margin: 20px;
+    }
+</style>
+<html>
+    <head>
+        <title>Vue All</title>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <p class="maintit">Learn Vue with Me</p>
+            <p class="tit">The below input works real time </p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>here we simply make the v-model to change the data every time the input changes</p>
+            </div>
+            <div class="code-display">
+                <div class="maindiv">
+                    <label for="message">Message:</label>
+                    <input type="text" id="message" v-model="message" placeholder="Enter a message..."/>
+                </div>
+                <div class="maindiv">
+                    <p>{{message}}</p>
+                </div>
+            </div>
+            <p class="tit">The below input only works when you press Enter</p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>here, we would only change the variable value when the Enter key is pressed
+                    (when an event is triggered)
+                </p>
+            </div>
+            <div class="code-display">
+                <div class="maindiv">
+                    <label for="message">Message:</label>
+                    <input type="text" id="message" placeholder="Enter a message..." 
+                    @keyup.enter="submitMessage"/>
+                </div>
+                <div class="maindiv">
+                    <p>{{message1}}</p>
+                </div>
+            </div>
+            <p class="tit">Mouse click events</p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>here we would be using the @click and @click.right directives to toggle
+                    the visibility of the box
+                </p>
+            </div>
+            <div class="code-display">
+                <div class="box-container">
+                    <div class="box" v-if="box_visible"></div>
+                    <button @click="box_visible = !box_visible">Click to toggle box</button>
+                    <button @click.right="box_visible = !box_visible">Right Click to toggle box</button>
+                </div>
+            </div>
+            <p class="tit">Vue Custom Components</p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>In vue custom components, we can create reusable components that can be used throughout our application.</p>
+            </div>
+            <div>
+                <div class="code-display">
+                    <custom-component/>
+                </div>
+            </div>
+            <p class="tit">Vue Component Props</p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>in vue props, we would be passing data between components</p>
+                <h3>Steps to make a Child component pass data to Parent component</h3>
+                <p>1. create a custom component</p>
+                <p>2. use the custom component in your parent component</p>
+                <p>3. to make a reference to the child component, you can use the components key</p>
+                <p>4. now,in order to pass data fromparent to child use v-bind directive</p>
+                <p>(one of the most used directives in Vue.js is v-bind)</p>
+                <p>(you would only use v-bind if the data is present in the list of variables 
+                    stored in the data function, you can simply not use v-bind if the data would be
+                    passed in a hardcoded manner )</p>
+                <p>(For example instead of using)</p>
+                <h4>v-bind:label="ChildPasswordLabel"</h4>
+                <p>(you can simply use)</p>
+                <h4>label="Password"</h4>
+                <p>(but this would not be dynamic, you would have to change it manually)</p>
+                <p>(95% of the time you wont use hardcoded values :0)</p>
+                <p>5. in order to use the data from v-bind use the props option in the child component</p>
+                <p>6. Now how to send the data from child to parent component?</p>
+                <p>7. instead of simply defining variables inside the child component you would use 
+                    computed properties or methods to send data back to the parent component
+                </p>
+                <p>8. in the computed property, you would define the variable for which you have v-model 
+                    in the child component
+                </p>
+                <p>9. in order to notice changes you would make use of get and set function for each variable
+                    inside the computed property
+                </p>
+                <p>10. you will v-model directly on the input element in the child component</p>
+                <p>11. You do this in order to GET the value from the parent component</p>
+                <p>12. since you are using v-model, you have acces to modelValue in the props of child component</p>
+                <p>13. in get you would use this.modelValue to recieve/GET the data from parent component</p>
+                <p>14. every time the data is changed in the child component set function is called</p>
+                <p>15. you will pass any variable (here "value") to the set function</p>
+                <p>16. you would use the $emit method to trigger an event which could be a custom event as well
+                    (here we use update:modelValue as the event name)
+                </p>
+                <p>17.once the event is emitted, the parent component can listen for it and respond accordingly</p>
+            </div>
+            <div class="code-display">
+                    <custom-component1/>
+            </div>
+            <p class="tit">Vue Loop</p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>Vue Loop is used to loop through an array of data and display it in the template</p>
+            </div>
+            <div class="code-display">
+                <custom-loop/>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    let app = Vue.createApp({
+        data(){
+            return{
+                message: 'Hello Vue!',
+                message1:'Enter message and press enter',
+                box_visible:true
+            }
+        },
+        methods: {
+            submitMessage(event){
+                this.message1 = event.target.value;
+            }
+        }
+    })
+
+    app.component('custom-component',{
+        template:
+        `
+            <div class="formdiv">
+                <form>
+                    <div class="input-template">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Enter your email" 
+                        v-model="email"/>
+                    </div>
+                    <div class="input-template">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Enter your password"
+                        v-model="password"/>
+                    </div>
+                    <button type="submit" @click.prevent="handleSubmit">Submit</button>
+                </form>
+            </div> 
+        `,
+        data(){
+            return{
+                email:"",
+                password:""
+            }
+        },
+        methods:{
+            handleSubmit(){
+                console.log(this.email, this.password);
+            }
+        }
+    })
+
+    app.component('custom-component1',{
+        template:
+        `
+            <div class="formdiv">
+                <form>
+                    <div class="input-template">
+                        <custom-input type="email"  
+                        :label="ChildEmailLabel" 
+                        v-bind:type="ChildEmailType"
+                        v-model="email" 
+                        
+                        />
+                    </div>
+                    <div class="input-template">
+                        <custom-input type="password" 
+                        v-bind:label="ChildPasswordLabel"
+                        v-bind:type="ChildPasswordType"
+                        v-model="password"
+                        />
+                    </div>
+                    <button type="submit" @click.prevent="handleSubmit">Submit</button>
+                </form>
+            </div> 
+        `,
+        //v-model="email" constantly listens for changes in the child component and updates the email variable in the parent component
+        //v-bind:label="ChildPasswordLabel"  OR :label="ChildPasswordLabel" both work the same
+        components:['custom-input'], // Register the custom-input component so our parent component knows there is a child component 
+        data(){
+            return{
+                email:"default email to GET in child",
+                password:"default password to GET in child",
+                ChildEmailLabel:"Email",
+                ChildPasswordLabel:"Password",
+                ChildEmailType:"email",
+                ChildPasswordType:"password"
+            }
+        },
+        methods:{
+            handleSubmit(){
+                console.log(this.email, this.password);
+            }
+        }
+    })
+
+    app.component('custom-input',{
+        template:
+        `
+            <label for="custom-input-tag">{{label}}</label>
+            <input :type="type" id="custom-input-tag" v-model="inputValue"/>
+            
+        `,
+        props:['label', 'type', 'modelValue'], //props are used to pass data from parent to child component
+        computed:{
+            inputValue:{
+                get(){
+                    return this.modelValue // access the modelValue attribute passed from the parent component
+                },
+                set(value){
+                    this.$emit('update:modelValue', value) // emit an event to the parent component
+                    //or use this.$emit('custom-event-name', value) to emit a custom event
+                    //or use this.$emit('update:modelValue', this.inputValue) to emit the current value of inputValue
+                }
+            }
+        }
+    })
+
+    app.component('custom-loop',{
+        template:
+        `
+            <p v-for="(name, i) in names" :key="name" class="loop" v-bind:key="i"> index:{{i}} 
+                name:{{name}}</p>
+            
+        `,
+        data(){
+            return{
+                names: ['Alice', 'Bob', 'Charlie', 'David']
+            }
+        }
+    })
+
+    app.mount("#app")
+</script>

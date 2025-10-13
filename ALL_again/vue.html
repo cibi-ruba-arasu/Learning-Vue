@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Vue First</title>
+    </head>
+    <body>
+        <div id="app" class="maindiv">
+            <p style="font-weight: bolder;">Vue First</p>
+            <p>{{message}}</p>
+        </div>
+    </body>
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    let app = Vue.createApp({
+        data(){
+            return{
+                message: 'Hello Vue!'
+            }
+        }
+    })
+
+    app.mount("#app")
+</script>
