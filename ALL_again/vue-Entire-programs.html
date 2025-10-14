@@ -63,6 +63,10 @@
     .code-display{
         background-color: lightgreen;
         margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     .maintit{
         background-color: black;
@@ -190,6 +194,17 @@
             <div class="code-display">
                 <custom-loop/>
             </div>
+            <p class="tit">Vue Components LifeCycle Hooks</p>
+            <div class="commentdiv">
+                <h2>Comments Section</h2>
+                <p>LifeCycle Hooks are used to perform actions at specific stages of a component's lifecycle.</p>
+            </div>
+            <div class="code-display">
+                <button @click="toggle_box">Press to toggle the grey Box</button>
+                <div class="box-container">
+                    <custom-box v-if="box_visibility"/>
+                </div>
+            </div>
         </div>
     </body>
 </html>
@@ -200,14 +215,21 @@
             return{
                 message: 'Hello Vue!',
                 message1:'Enter message and press enter',
-                box_visible:true
+                box_visible:true,
+                box_visibility:true
             }
         },
         methods: {
             submitMessage(event){
                 this.message1 = event.target.value;
+            },
+            toggle_box(){
+                this.box_visibility = !this.box_visibility;
             }
-        }
+        },
+        updated(){
+            console.log("Component Updated");
+        },
     })
 
     app.component('custom-component',{
@@ -320,6 +342,23 @@
                 names: ['Alice', 'Bob', 'Charlie', 'David']
             }
         }
+    })
+
+    app.component('custom-box',{
+        template:
+        `
+            <div class="box" style="background-color:grey;"></div>
+        `,
+        
+        created(){
+            console.log("Component Created");
+        },
+        mounted(){
+            console.log("Component Mounted");
+        },
+        unmounted(){
+            console.log("Component Unmounted");
+        },
     })
 
     app.mount("#app")

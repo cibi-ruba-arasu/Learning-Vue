@@ -7,3 +7,8 @@
 <p>Goal today: 0:00 to 1:30 hrs</p>
 
 <p>finished til 1:05 hrs of course (14/10/2025 - Tuesday - 1:05 hrs)</p>
+
+<h1>Session 2 (14/10/2025 - Tuesday - 22:54)</h1>
+
+<p>Done with basics</p>
+<p>Last commit</p>
