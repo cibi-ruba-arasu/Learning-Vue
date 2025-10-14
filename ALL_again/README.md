@@ -13,3 +13,7 @@
 <p>Done with basics</p>
 
 <h1>Lets start with the project</h1>
+
+<p>https://github.com/gwenf/vue3-fcc-course-basic-product-cart-demo</p>
+
+frok this to create a new repository and continue everything in that repo "Vue-Project"
