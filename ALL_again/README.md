@@ -11,5 +11,5 @@
 <h1>Session 2 (14/10/2025 - Tuesday - 22:54)</h1>
 
 <p>Done with basics</p>
-<p>Last commit</p>
-<h4>Te=he video tutorial does not cover how to start the project from scratch so imma do it myself </h4>
+
+<h1>Lets start with the project</h1>
