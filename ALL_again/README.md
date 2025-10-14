@@ -12,3 +12,4 @@
 
 <p>Done with basics</p>
 <p>Last commit</p>
+<h4>Te=he video tutorial does not cover how to start the project from scratch so imma do it myself </h4>
